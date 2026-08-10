@@ -1,7 +1,8 @@
 package types
+
 import (
-	baseapp "github.com/natifdevelopment/go-baseapp"
 	"github.com/google/uuid"
+	baseapp "github.com/natifdevelopment/go-baseapp"
 )
 
 func (ConfigData) TableName() string {
@@ -29,7 +30,7 @@ type ConfigDataInfo struct {
 	baseapp.BaseModel
 	Name        string `gorm:"type:varchar(255);" json:"name"`
 	Code        string `gorm:"type:varchar(255);unique;" json:"code"`
-	Description string `gorm:"type:varchar(255)" json:"description"`
+	Description string `gorm:"type:text" json:"description"`
 	Color       string `gorm:"type:varchar(255)" json:"color"`
 	Unit        string `gorm:"type:varchar(255)" json:"unit"`
 	DataType    string `gorm:"default:'Text'" json:"dataType"`
