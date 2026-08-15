@@ -10,10 +10,13 @@ func (PromptOcr) TableName() string {
 }
 
 type PromptOcr struct {
-	ID        uuid.UUID  `gorm:"type:uuid;default:uuid_generate_v4();primaryKey" json:"id"`
-	Name      string     `gorm:"type:varchar(255);not null;unique" json:"name"`
-	Prompt    string     `gorm:"type:text;not null" json:"prompt"`
-	IsActive  bool       `gorm:"type:bool;default:true" json:"isActive"`
-	CreatedAt time.Time  `gorm:"type:timestamp" json:"createdAt"`
-	UpdatedAt *time.Time `gorm:"type:timestamp" json:"updatedAt"`
+	ID           uuid.UUID  `gorm:"type:uuid;default:uuid_generate_v4();primaryKey" json:"id"`
+	Name         string     `gorm:"type:varchar(255);not null;unique" json:"name"`
+	Prompt       string     `gorm:"type:text;not null" json:"prompt"`
+	IsActive     bool       `gorm:"type:bool;default:true" json:"isActive"`
+	Category     string     `gorm:"type:varchar(50);not null;default:'coa_cow'" json:"category"`
+	DocumentType *string    `gorm:"type:varchar(50)" json:"documentType"`
+	IsDefault    bool       `gorm:"type:bool;default:false" json:"isDefault"`
+	CreatedAt    time.Time  `gorm:"type:timestamp" json:"createdAt"`
+	UpdatedAt    *time.Time `gorm:"type:timestamp" json:"updatedAt"`
 }
