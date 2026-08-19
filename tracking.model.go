@@ -96,10 +96,17 @@ type TrackingTypeSummary struct {
 // TrackingListMeta metadata agregat untuk halaman list Tracking Kapal.
 // Frontend dapat langsung memakai ByType untuk merender legend
 // (Total/Vessel/TUG Boat/SPB) tanpa menghitung ulang client-side.
+//
+// DataStale=true berarti data berasal dari snapshot terakhir di
+// tracking_history (upstream sedang tidak bisa di-fetch). LastUpdatedAt
+// adalah waktu snapshot terbaru yang dipakai (ISO 8601); null jika data
+// live (upstream sehat).
 type TrackingListMeta struct {
-	Total       int                              `json:"total"`
-	TotalVolume float64                          `json:"total_volume_bl"`
-	ByType      map[ShipType]TrackingTypeSummary `json:"by_type"`
+	Total         int                              `json:"total"`
+	TotalVolume   float64                          `json:"total_volume_bl"`
+	ByType        map[ShipType]TrackingTypeSummary `json:"by_type"`
+	DataStale     bool                             `json:"data_stale"`
+	LastUpdatedAt *time.Time                       `json:"last_updated_at"`
 }
 
 // TrackingListResponse response untuk endpoint list tracking kapal.
