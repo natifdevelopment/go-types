@@ -1,8 +1,10 @@
 package types
+
 import (
-	baseapp "github.com/natifdevelopment/go-baseapp"
 	"encoding/json"
 	"time"
+
+	baseapp "github.com/natifdevelopment/go-baseapp"
 
 	"github.com/google/uuid"
 )
@@ -193,6 +195,7 @@ type DataConnector struct {
 	KafkaType            *KafkaType               `gorm:"type:varchar(45)" json:"kafkaType"`
 	ErrorMessage         *string                  `gorm:"type:text" json:"errorMessage"`
 	ErrorCount           int                      `gorm:"type:int;default:0" json:"errorCount"`
+	LastTestedAt         *time.Time               `gorm:"type:timestamp" json:"lastTestedAt"`
 	KafkaBrokerAddresses *string                  `gorm:"type:varchar(355)" json:"kafkaBrokerAddresses"`
 	KafkaTopics          *string                  `gorm:"type:varchar(255)" json:"kafkaTopics"`
 	KafkaConsumerGroup   *string                  `gorm:"type:varchar(75)" json:"kafkaConsumerGroup"`
