@@ -149,6 +149,7 @@ type DataConnector struct {
 	AuthenticationType   ConnectorAuthenticationType `gorm:"type:varchar(100); default:'basic_authentication'" json:"authenticationType"`
 	AuthUser             *string                     `gorm:"type:text" json:"authUser"`
 	AuthPassword         *string                     `gorm:"type:text" json:"-"`
+	AuthPasswordPlain    *string                     `gorm:"-" json:"authPassword,omitempty"`
 	AccessTokenMethod    *string                     `gorm:"type:varchar(12)" json:"accessTokenMethod"`
 	AccessTokenUrl       *string                     `gorm:"type:varchar(455)" json:"accessTokenUrl"`
 	AccessTokenPath      *string                     `gorm:"type:varchar(45)" json:"accessTokenPath"`
